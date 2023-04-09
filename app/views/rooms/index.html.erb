@@ -1,0 +1,24 @@
+<div class = "room-item">
+    <h3>登録施設一覧</h3>
+
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>施設名</th>
+            <th>紹介文</th>
+            <th>料金</th>
+            <th>作成日</th>
+        </tr>
+        <% @rooms.each do |room| %>
+        <tr>
+          <% if room.user_id == current_user.id %>
+            <td><%= room.id %></td>
+            <td><%= room.name %></td>
+            <td><%= room.detail %></td>
+            <td><%= room.price %></td>
+            <td><%= room.created_at.strftime("%Y/%m/%d") %></td>
+          <% end %>
+        </tr>
+        <% end %>
+    </table>

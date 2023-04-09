@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
 
-  def top
+  def index
+    @rooms = Room.all
   end
-  
+
 end

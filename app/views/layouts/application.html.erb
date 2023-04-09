@@ -8,6 +8,36 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <div class = header-list>
+      <p class="header-logo"><%= link_to "Potepan_Trip","/" %></p>
+      <% if user_signed_in? %>
+        <ul class = "ddmenu">
+          <li><%= current_user.name %></li>
+            <ul>
+              <li><%= link_to "施設の新規登録", new_room_path %></li>
+              <li>予約済み一覧</li>
+              <li><%= link_to "登録済み一覧", rooms_path %></li>
+              <li>アカウント設定</li>
+              <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+            </ul>
+        </ul>
+
+      <% else %>
+        <div>
+          <%= link_to "ログイン", new_user_session_path, class: 'post' %>
+          <%= link_to "新規登録", new_user_registration_path, class: 'post' %>
+        </div>
+      <% end %>
+
+    </div>
+
+    <% if flash[:notice] %>
+      <p>Notice: <%= flash[:notice] %></p>
+    <% end %>
+    <% if flash[:alert] %>
+      <p>Alert: <%= flash[:alert] %></p>
+    <% end %>
   </head>
 
   <body>
