@@ -1,0 +1,29 @@
+<table>
+  <h2>予約内容確認</h2>
+  <tr>
+    <td>チェックイン</td>
+    <td><%= @reservation.check_in.strftime("%Y/%m/%d") %></td>
+  </tr>
+  <tr>
+    <td>チェックアウト</td>
+    <td><%= @reservation.check_out.strftime("%Y/%m/%d") %></td>
+  </tr>
+  <tr>
+    <td>人数</td>
+    <td><%= @reservation.people %>人</td>
+  </tr>
+
+  <tr>
+    <%= form_with model: @reservation do |f| %>
+      <%= f.hidden_field :room_id, {value: @room.id} %>
+      <%= f.hidden_field :people %>
+      <%= f.hidden_field :check_in %>
+      <%= f.hidden_field :check_out %>
+      <td><%= f.submit "予約を確定する" %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <%= link_to "ルーム詳細に戻る", room_path(@room) %>
+  </tr>
+
+</table>

@@ -5,11 +5,12 @@ class ReservationsController < ApplicationController
   end
 
   def new
-    @reservation = Reservations.new()
+    @reservation = Reservation.new(reservation_params)
+    @room = Room.find(params[:room_id])
   end
 
   def create
-      @reservation = current_user.reservations.create(reservation_params)
+      @reservation = current_user.reservations.build(reservation_params)
 
       if @reservation.save
           flash[:notice] = "予約が完了しました"
@@ -21,6 +22,6 @@ class ReservationsController < ApplicationController
   end
 
   def reservation_params
-    params.permit(:check_in, :check_out, :people)
+    params.permit(:check_in, :check_out, :people, :room_id, :user_id)
   end
 end

@@ -10,36 +10,24 @@
 </div>
 
 <div class ="reserve-form">
-  <%= form_with url: reservations_path do |f| %>
-    <table>
-      <tr>
-        <th>
-          <a>チェックイン</a>
-        </th>
-        <td>
-          <%= f.date_field :chek_in %>
-        </td>
-      </tr>
-
-      <tr>
-        <th>
-          <a>チェックアウト</a>
-        </th>
-        <td>
-          <%= f.date_field :check_out %>
-        </td>
-      </tr>
-
-      <tr>
-        <th>
-          <a>人数</a>
-        </th>
-        <td>
-          <%= f.number_field :people %>
-        </td>
-      </tr>
-    </table>
+  <%= form_with url: new_reservation_path, method: :get do |f| %>
+    <%= f.hidden_field :user_id, {value: current_user.id} %>
     <%= f.hidden_field :room_id, {value: @room.id} %>
-    <%= f.submit "予約する" %>
+
+    <%= f.label :check_in, "チェックイン" %>
+    <%= f.date_field :check_in, min: Date.current, required: true %>
+
+    <%= f.label :check_out, "チェックアウト" %>
+    <%= f.date_field :check_out, min: Date.current.next_day, required: true %>
+
+    <%= f.label :people, "人数" %>
+    <%= f.number_field :people, required: true, min: 1 %>
+
+    <% if user_signed_in? %>
+      <%= f.submit "予約する", class:"" %>
+    <% else %>
+      <%= link_to "ログイン", new_user_session_path %>
+    <% end %>
+
   <% end %>
 </div>
