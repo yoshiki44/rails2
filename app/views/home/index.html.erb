@@ -6,7 +6,7 @@
           <th>施設名</th>
           <th>紹介文</th>
           <th>料金</th>
-          <th>作成日</th>
+          <th>詳細</th>
       </tr>
       <% @rooms.each do |room| %>
         <tr>
@@ -14,7 +14,7 @@
           <td><%= room.name %></td>
           <td><%= room.detail %></td>
           <td><%= room.price %></td>
-          <td><%= room.created_at.strftime("%Y/%m/%d") %></td>
+          <td><%= link_to "詳細はこちら","/rooms/#{room.id}" %></td>
         </tr>
       <% end %>
   </table>

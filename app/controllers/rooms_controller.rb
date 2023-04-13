@@ -23,4 +23,8 @@ class RoomsController < ApplicationController
   def room_params
     params.permit(:name, :detail, :price, :address, :introduction)
   end
+
+  def show
+    @room = Room.find_by(id: params[:id])
+  end
 end

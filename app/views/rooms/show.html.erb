@@ -1,0 +1,45 @@
+<div class = "return-page">
+  <%= link_to "←戻る","/" %>
+</div>
+<div class = "room-info">
+  <p><%= @room.name %></p>
+  <p><%= @room.price %></p>
+</div>
+<div class = "room-address">
+  <p><%= @room.address %></p>
+</div>
+
+<div class ="reserve-form">
+  <%= form_with url: reservations_path do |f| %>
+    <table>
+      <tr>
+        <th>
+          <a>チェックイン</a>
+        </th>
+        <td>
+          <%= f.date_field :chek_in %>
+        </td>
+      </tr>
+
+      <tr>
+        <th>
+          <a>チェックアウト</a>
+        </th>
+        <td>
+          <%= f.date_field :check_out %>
+        </td>
+      </tr>
+
+      <tr>
+        <th>
+          <a>人数</a>
+        </th>
+        <td>
+          <%= f.number_field :people %>
+        </td>
+      </tr>
+    </table>
+    <%= f.hidden_field :room_id, {value: @room.id} %>
+    <%= f.submit "予約する" %>
+  <% end %>
+</div>
