@@ -6,16 +6,19 @@ class ReservationsController < ApplicationController
 
   def new
     @reservation = Reservation.new(reservation_params)
-    @room = Room.find(params[:room_id])
+    @room = Room.all
   end
 
   def create
       @reservation = current_user.reservations.build(reservation_params)
+        binding.pry
 
       if @reservation.save
+        binding.pry
           flash[:notice] = "予約が完了しました"
           redirect_to("/rooms/index")
       else
+        binding.pry
           flash[:alert] = "予約に失敗しました"
           redirect_back(fallback_location: root_path)
       end

@@ -15,10 +15,10 @@
 
   <tr>
     <%= form_with model: @reservation do |f| %>
-      <%= f.hidden_field :room_id, {value: @room.id} %>
-      <%= f.hidden_field :people %>
-      <%= f.hidden_field :check_in %>
-      <%= f.hidden_field :check_out %>
+      <%= f.hidden_field :room_id, {value: @reservation.room.id} %>
+      <%= f.hidden_field :people, {value: @reservation.people} %>
+      <%= f.hidden_field :check_in, {value: @reservation.check_in} %>
+      <%= f.hidden_field :check_out, {value: @reservation.check_out} %>
       <td><%= f.submit "予約を確定する" %></td>
     <% end %>
   </tr>
