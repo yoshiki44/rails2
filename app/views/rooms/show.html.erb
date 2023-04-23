@@ -4,11 +4,19 @@
   <% end %>
 </div>
 <div class = "room-info">
-  <p><%= @room.name %></p>
-  <p><%= @room.price %>円</p>
-</div>
-<div class = "room-address">
-  <p><%= @room.address %></p>
+  <p><%= image_tag @room.room_icon.url %></p>
+  <div>
+    <span>施設名:</span>
+    <span><%= @room.name %></span>
+  </div>
+  <div>
+    <span>料金（1人/1泊）:</span>
+    <span><%= @room.price %>円</span>
+  </div>
+  <div>
+    <span>住所:</span>
+    <span><%= @room.address %></span>
+  </div>
 </div>
 
 <div class ="reserve-form">

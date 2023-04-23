@@ -7,4 +7,7 @@ class User < ApplicationRecord
   has_many :rooms, foreign_key: "user_id"
   has_many :reservations, foreign_key: "user_id"
   mount_uploader :icon, UserImageUploader
+
+  validates :name, presence: true
+
 end

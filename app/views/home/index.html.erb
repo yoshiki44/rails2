@@ -4,18 +4,22 @@
       <tr>
         <th>施設画像</th>
         <th>施設名</th>
-        <th>紹介文</th>
+        <th>住所</th>
+        <th>施設詳細</th>
         <th>料金</th>
-        <th>詳細</th>
       </tr>
       <% @results.each do |result| %>
         <tr>
           <td><%= image_tag result.room_icon.url %></td>
-          <td><%= result.name %></td>
+          <td><%= link_to result.name, "/rooms/#{result.id}" %></td>
+          <td><%= result.address %></td>
           <td><%= result.detail %></td>
           <td><%= result.price %>円</td>
-          <td><%= link_to "詳細はこちら","/rooms/#{result.id}" %></td>
         </tr>
       <% end %>
   </table>
+
+  <div>
+    <h4 class = "information" ><%= "合計件数：#{@results.count}件" %></h4>
+  </div>
 </div>
