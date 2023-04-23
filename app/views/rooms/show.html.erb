@@ -1,9 +1,11 @@
 <div class = "return-page">
-  <%= link_to "←戻る","/" %>
+  <%= link_to 'javascript:history.back()' do %>
+    <button>戻る</button>
+  <% end %>
 </div>
 <div class = "room-info">
   <p><%= @room.name %></p>
-  <p><%= @room.price %></p>
+  <p><%= @room.price %>円</p>
 </div>
 <div class = "room-address">
   <p><%= @room.address %></p>

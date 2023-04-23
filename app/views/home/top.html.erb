@@ -8,8 +8,24 @@
     <p>行きたい旅行先のホテルを探そう</p>
   </div>
   <div class = "serch">
-    <form action="/index" accept-charset="UTF-8" method="get">
-        <input class="form-control FirstViewSearch__input">
-        <input type="submit" value="検索" class="btn FirstViewSearch__button">
-    </form>
+    <%= search_form_for @q, url: index_path do |f| %>
+      <%= f.label :name_or_address_or_detail_cont, 'キーワード' %>
+      <%= f.search_field :name_or_address_cont %>
+      <br>
+      <%= f.submit '検索' %>
+    <% end %>
+  </div>
+  <div>
+    <a class = "serch_tokyo" href= "/index?q%5Bname_or_address_cont%5D=東京都&commit=検索">
+      <span>東京</span>
+    </a>
+    <a class = "serch_osaka" href= "/index?q%5Bname_or_address_cont%5D=大阪府&commit=検索">
+      <span>大阪</span>
+    </a>
+    <a class = "serch_kyoto" href= "/index?q%5Bname_or_address_cont%5D=京都府&commit=検索">
+      <span>京都</span>
+    </a>
+    <a class = "serch_sapporo" href= "/index?q%5Bname_or_address_cont%5D=札幌市&commit=検索">
+      <span>札幌</span>
+    </a>
   </div>

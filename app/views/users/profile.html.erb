@@ -1,0 +1,24 @@
+<h1>アカウント設定</h1>
+<h3>プロフィール</h3>
+  <table>
+    <tr>
+      <th>画像</th>
+      <th>名前</th>
+      <th>自己紹介</th>
+    </tr>
+
+    <tr>
+      <td><%= image_tag current_user.icon.url %></td>
+      <td><%= current_user.name %></td>
+      <td><%= current_user.introduction %></td>
+    </tr>
+  </table>
+
+  <div>
+    <%= link_to "編集", "/users/profiles/edit" %>
+  </div>
+
+  <div>
+    <%= link_to "アカウント", "/users/acount" %>
+    <%= link_to "プロフィール", "/users/profile" %>
+  </div>

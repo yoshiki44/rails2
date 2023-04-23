@@ -2,19 +2,19 @@
 <div>
   <table>
       <tr>
-          <th>ID</th>
-          <th>施設名</th>
-          <th>紹介文</th>
-          <th>料金</th>
-          <th>詳細</th>
+        <th>施設画像</th>
+        <th>施設名</th>
+        <th>紹介文</th>
+        <th>料金</th>
+        <th>詳細</th>
       </tr>
-      <% @rooms.each do |room| %>
+      <% @results.each do |result| %>
         <tr>
-          <td><%= room.id %></td>
-          <td><%= room.name %></td>
-          <td><%= room.detail %></td>
-          <td><%= room.price %></td>
-          <td><%= link_to "詳細はこちら","/rooms/#{room.id}" %></td>
+          <td><%= image_tag result.room_icon.url %></td>
+          <td><%= result.name %></td>
+          <td><%= result.detail %></td>
+          <td><%= result.price %>円</td>
+          <td><%= link_to "詳細はこちら","/rooms/#{result.id}" %></td>
         </tr>
       <% end %>
   </table>

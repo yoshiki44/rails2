@@ -1,48 +1,33 @@
 <h1>施設の新規登録</h1>
-<%= form_tag ("/rooms") do %>
-  <table>
-    <tr>
-      <th>
-        <a>施設名</a>
-      </th>
-      <td>
-        <textarea name="name"></textarea>
-      </td>
-    </tr>
 
-    <tr>
-      <th>
-        <a>施設詳細</a>
-      </th>
-      <td>
-        <textarea name="detail"></textarea>
-      </td>
-    </tr>
+<%= form_with url: "/rooms"  do |f| %>
+  <div class ="field">
+    <%= f.label :name, value = "施設名" %>
+    <%= f.text_field :name %>
+  </div>
 
-    <tr>
-      <th>
-        <a>料金</a>
-      </th>
-      <td>
-        <textarea name="price"></textarea>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        <a>住所</a>
-      </th>
-      <td>
-        <textarea name="address"></textarea>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        <a>画像</a>
-      </th>
-      <td>
-        <textarea name="introduction"></textarea>
-      </td>
-    </tr>
-  </table>
-  <input type="submit" value="登録">
+  <div class ="field">
+    <%= f.label :detail, value = "詳細" %>
+    <%= f.text_area :detail %>
+  </div>
+
+  <div class ="field">
+    <%= f.label :price, value = "料金" %>
+    <%= f.text_field :price %>
+  </div>
+
+  <div class ="field">
+    <%= f.label :address, value = "住所" %>
+    <%= f.text_field :address %>
+  </div>
+
+  <div class ="field">
+    <%= f.label :room_icon, value = "参考画像" %>
+    <%= f.file_field :room_icon %>
+  </div>
+
+  <div class ="field">
+    <%= f.submit "登録する" %>
+  </div>
+
 <% end %>
