@@ -17,10 +17,14 @@
     <span>住所:</span>
     <span><%= @room.address %></span>
   </div>
+  <div>
+    <span>紹介文:</span>
+    <span><%= @room.detail %></span>
+  </div>
 </div>
 
 <div class ="reserve-form">
-  <%= form_with url: new_reservation_path, method: :get do |f| %>
+  <%= form_with url: new_reservation_path, local: true, method: :get do |f| %>
     <%= f.hidden_field :user_id, {value: current_user.id} %>
     <%= f.hidden_field :room_id, {value: @room.id} %>
 

@@ -17,7 +17,7 @@ class ReservationsController < ApplicationController
         redirect_to controller: :home, action: :index
     else
         flash[:alert] = "予約に失敗しました"
-        redirect_back(fallback_location: root_path)
+        render "reservations/new"
     end
   end
 

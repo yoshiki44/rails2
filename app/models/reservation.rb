@@ -12,7 +12,7 @@ class Reservation < ApplicationRecord
 
   def check_out_check
     unless self.check_in.nil? || self.check_out.nil?
-      errors.add(:finish, "は開始日より前の日付は登録できません。") if self.check_in >= self.check_out
+      errors.add(:check_out,"はチェックインより前の日付は登録できません。") if self.check_in >= self.check_out
     end
   end
 end

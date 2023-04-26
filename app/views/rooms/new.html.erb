@@ -1,3 +1,7 @@
+<div class=error_box>
+  <%= render "shared/error_room" %>
+</div>
+
 <h1>施設の新規登録</h1>
 
 <%= form_with url: "/rooms"  do |f| %>
@@ -9,11 +13,6 @@
   <div class ="field">
     <%= f.label :detail, value = "施設詳細" %>
     <%= f.text_area :detail %>
-  </div>
-
-  <div class="field">
-    <%= f.label :introduction, value = "紹介文" %>
-    <%= f.text_area :introduction %>
   </div>
 
   <div class ="field">

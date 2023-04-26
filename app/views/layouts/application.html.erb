@@ -13,7 +13,9 @@
       <p class="header-logo"><%= link_to "Potepan_Trip","/" %></p>
       <% if user_signed_in? %>
       <div class="dropdown">
-        <%= image_tag current_user.icon.url %>
+        <div class="header-icon">
+          <%= image_tag current_user.icon.url %>
+        </div>
         <div class = "user_name">
           <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
             <%= current_user.name %>
