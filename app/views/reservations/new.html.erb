@@ -1,0 +1,41 @@
+<%= render "shared/error_reservation" %>
+<table>
+  <h2>予約内容確認</h2>
+  <tr>
+    <td>チェックイン</td>
+    <td><%= @reservation.check_in.strftime("%Y/%m/%d") %></td>
+  </tr>
+  <tr>
+    <td>チェックアウト</td>
+    <td><%= @reservation.check_out.strftime("%Y/%m/%d") %></td>
+  </tr>
+  <tr>
+    <td>料金（1人/1泊）</td>
+    <td><%= @reservation.room.price %>円</td>
+  </tr>
+  <tr>
+    <td>人数</td>
+    <td><%= @reservation.people %>人</td>
+  </tr>
+  <tr>
+    <td>合計料金</td>
+    <td><%= @reservation.room.price * @reservation.people * (@reservation.check_out - @reservation.check_in).to_i %>円</td>
+  </tr>
+
+  <tr>
+    <%= form_with url: reservations_path do |f| %>
+      <%= f.hidden_field :user_id, {value: current_user.id} %>
+      <%= f.hidden_field :room_id, {value: @reservation.room.id} %>
+      <%= f.hidden_field :people, {value: @reservation.people} %>
+      <%= f.hidden_field :check_in, {value: @reservation.check_in} %>
+      <%= f.hidden_field :check_out, {value: @reservation.check_out} %>
+      <td><%= f.submit "予約を確定する" %></td>
+    <% end %>
+  </tr>
+  <div class = "return-page">
+    <%= link_to 'javascript:history.back()' do %>
+      <button>戻る</button>
+    <% end %>
+  </div>
+
+</table>

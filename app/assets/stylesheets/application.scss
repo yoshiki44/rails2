@@ -1,0 +1,62 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+.header-list{
+  background-color: navy;
+  display: flex;
+  justify-content: space-between;
+  line-height: 20px;
+  align-items: center;
+}
+
+.header-list div{
+  color: white;
+  font-weight: bold;
+}
+
+.header-logo{
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+ul.ddmenu li:hover {
+   background-color: #ffdddd; /* メニュー項目にマウスが載ったときの背景色(淡いピンク) */
+   color: #dd0000;            /* メニュー項目にマウスが載ったときの文字色(濃い赤色) */
+}
+
+/* ▼サブメニュードロップダウン */
+ul.ddmenu ul {
+   display: none;       /* ★1:標準では非表示にする */
+   margin: 0px;         /* ★2:サブメニュー外側の余白(ゼロ) */
+   padding: 0px;        /* ★3:サブメニュー内側の余白(ゼロ) */
+   position: absolute;  /* ★4:絶対配置にする */
+}
+
+/* ---------------------------------- */
+/* ▼サブメニューがある場合に開く処理 */   /* ※サブメニューが1階層しか存在しない場合の記述 */
+/* ---------------------------------- */
+ul.ddmenu:hover ul {
+   display: block;      /* ★5:マウスポインタが載っている項目の内部にあるリストを表示する */
+}
+
+.header-icon{
+  width: 80px;
+  height: 80px;
+}
+.header-icon img{
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,47 @@
+<div class = "return-page">
+  <%= link_to 'javascript:history.back()' do %>
+    <button>戻る</button>
+  <% end %>
+</div>
+<div class = "room-info">
+  <p><%= image_tag @room.room_icon.url %></p>
+  <div>
+    <span>施設名:</span>
+    <span><%= @room.name %></span>
+  </div>
+  <div>
+    <span>料金（1人/1泊）:</span>
+    <span><%= @room.price %>円</span>
+  </div>
+  <div>
+    <span>住所:</span>
+    <span><%= @room.address %></span>
+  </div>
+  <div>
+    <span>紹介文:</span>
+    <span><%= @room.detail %></span>
+  </div>
+</div>
+
+<div class ="reserve-form">
+  <%= form_with url: new_reservation_path, local: true, method: :get do |f| %>
+    <%= f.hidden_field :user_id, {value: current_user.id} %>
+    <%= f.hidden_field :room_id, {value: @room.id} %>
+
+    <%= f.label :check_in, "チェックイン" %>
+    <%= f.date_field :check_in, min: Date.current, required: true %>
+
+    <%= f.label :check_out, "チェックアウト" %>
+    <%= f.date_field :check_out, min: Date.current.next_day, required: true %>
+
+    <%= f.label :people, "人数" %>
+    <%= f.number_field :people, required: true, min: 1 %>
+
+    <% if user_signed_in? %>
+      <%= f.submit "予約する", class:"" %>
+    <% else %>
+      <%= link_to "ログイン", new_user_session_path %>
+    <% end %>
+
+  <% end %>
+</div>

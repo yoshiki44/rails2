@@ -1,0 +1,26 @@
+<div class = "reserve-item">
+    <h3>予約済み施設一覧</h3>
+
+
+    <table>
+        <tr>
+          <th>施設画像</th>
+          <th>施設名</th>
+          <th>施設詳細</th>
+          <th>金額</th>
+          <th>チェックイン</th>
+          <th>チェックアウト</th>
+          <th>予約確定日時</th>
+        </tr>
+        <% @reservations.each do |reservation| %>
+        <tr>
+          <td><%= image_tag reservation.room.room_icon.url %>
+          <td><%= link_to reservation.room.name, "/rooms/#{reservation.room_id}" %></td>
+          <td><%= reservation.room.detail %></td>
+          <td><%= reservation.room.price * reservation.people * (reservation.check_out - reservation.check_in).to_i %>円</td>
+          <td><%= reservation.check_in.strftime("%Y/%m/%d") %></td>
+          <td><%= reservation.check_out.strftime("%Y/%m/%d") %></td>
+          <td><%= reservation.created_at.strftime("%Y/%m/%d %H:%M") %></td>
+        </tr>
+        <% end %>
+    </table>

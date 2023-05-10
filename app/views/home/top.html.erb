@@ -1,0 +1,44 @@
+<div class="main top-main">
+  <div class='login'>
+
+
+  </div>
+  <div class="top-message">
+    <h2>そうだ、旅行に行こう</h2>
+    <p>行きたい旅行先のホテルを探そう</p>
+</div>
+<div class = "serch">
+  <%= search_form_for @q, url: index_path do |f| %>
+    <%= f.label :name_or_detail_cont, 'キーワード' %>
+    <%= f.search_field :name_or_detail_cont %>
+    <br>
+    <%= f.submit '検索' %>
+  <% end %>
+</div>
+
+<div class = "serch">
+  <%= search_form_for @q, url: index_path do |f| %>
+    <%= f.label :address_cont, '住所検索' %>
+    <%= f.search_field :address_cont %>
+    <br>
+    <%= f.submit '検索' %>
+  <% end %>
+</div>
+
+<div class="area">
+  <h1>おすすめエリア</h1>
+  <div>
+    <a class = "serch_tokyo" href= "/index?q%5Bname_or_address_cont%5D=東京都&commit=検索">
+      <span>東京</span>
+    </a>
+    <a class = "serch_osaka" href= "/index?q%5Bname_or_address_cont%5D=大阪府&commit=検索">
+      <span>大阪</span>
+    </a>
+    <a class = "serch_kyoto" href= "/index?q%5Bname_or_address_cont%5D=京都府&commit=検索">
+      <span>京都</span>
+    </a>
+    <a class = "serch_sapporo" href= "/index?q%5Bname_or_address_cont%5D=札幌市&commit=検索">
+      <span>札幌</span>
+    </a>
+  </div>
+</div>
